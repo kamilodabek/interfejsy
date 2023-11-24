@@ -9,6 +9,7 @@ import { GraphicElementsComponent } from './graphic-elements/graphic-elements.co
 import {AppRoutingModule} from "./app-routing.module";
 import { ListComponent } from './list/list.component';
 import { GameComponent } from './game/game.component';
+import {NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { GameComponent } from './game/game.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    NgbCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

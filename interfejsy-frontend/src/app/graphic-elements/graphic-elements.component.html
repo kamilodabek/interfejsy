@@ -1,1 +1,47 @@
-<p>graphic-elements works!</p>
+
+
+<div ngbAccordion>
+  <div ngbAccordionItem>
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton>First</button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>Content for the first item</ng-template>
+      </div>
+    </div>
+  </div>
+  <div ngbAccordionItem>
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton>First</button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>Content for the first item</ng-template>
+      </div>
+    </div>
+  </div>
+  <div ngbAccordionItem>
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton>First</button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>Content for the first item</ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div d-flex justify-content-center">
+  <div class="col-md-5">
+    <ngb-carousel *ngIf="images" [interval]="5000" [wrap]="true">
+      <ng-template ngbSlide *ngFor="let image of images">
+        <div class="carousel-image-container">
+          <img class="carousel-image" src="{{image.name}}" [alt]="image.caption">
+          <div class="caption">{{image.caption}}</div>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div>

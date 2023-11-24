@@ -1,0 +1,39 @@
+.carousel-wrapper {
+  width: 50vw;
+  height: 50vh;
+  overflow: hidden;
+  position: relative;
+  .caption{
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+
+.carousel-image-container {
+  width: 100%; /* Dostosuj szerokość kontenera obrazu */
+  max-height: 300px; /* Dostosuj maksymalną wysokość kontenera obrazu */
+  overflow: hidden; /* Ukryj ewentualne przekroczenia */
+  .caption{
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: #0d6efd;
+    color: #fff;
+  }
+}
+
+.carousel-image {
+  width: 100%; /* Ustaw szerokość obrazu na 100% szerokości kontenera */
+  height: auto; /* Ustaw wysokość obrazu na automatyczną dostosowaną do szerokości */
+  object-fit: cover; /* Zapewnij, aby obraz wypełniał kontener, zachowując proporcje */
+}
+
+.carousel-container {
+  max-width: 600px; /* Ustaw maksymalną szerokość kontenera karuzeli */
+  margin: auto; /* Centralizuj kontener na stronie */
+}
