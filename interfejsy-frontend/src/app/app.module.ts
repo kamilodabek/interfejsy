@@ -10,6 +10,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import { ListComponent } from './list/list.component';
 import { GameComponent } from './game/game.component';
 import {NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SquareComponent } from './game/square/square.component';
+import { BoardComponent } from './game/board/board.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormComponent,
     GraphicElementsComponent,
     ListComponent,
-    GameComponent
+    GameComponent,
+    SquareComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,

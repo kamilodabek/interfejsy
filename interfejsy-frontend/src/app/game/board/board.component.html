@@ -1,0 +1,28 @@
+
+<h3 *ngIf="!winner && !isDraw">Tura gracza: {{ player }} </h3>
+
+<h3 *ngIf="winner">
+  Gracz {{ winner }} wygrał!
+  <hr>
+  <div class="d-grid mx-auto">
+    <button type="button" class="btn btn-primary btn-lg" (click)="newGame()">Rozpocznij nową grę</button>
+  </div>
+</h3>
+<h3 *ngIf="isDraw">
+  Remis
+  <hr>
+  <div class="d-grid mx-auto">
+    <button type="button" class="btn btn-primary btn-lg" (click)="newGame()">Rozpocznij nową grę</button>
+  </div>
+</h3>
+
+<hr>
+<main>
+  <app-square
+    *ngFor="let val of squares; let i = index"
+    [value]="val"
+    (click)="makeMove(i)">
+
+  </app-square>
+</main>
+
