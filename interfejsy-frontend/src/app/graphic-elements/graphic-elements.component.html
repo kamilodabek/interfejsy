@@ -1,5 +1,5 @@
 
-
+<div class="col-md-5 justify-content-center">
 <div ngbAccordion>
   <div ngbAccordionItem>
     <h2 ngbAccordionHeader>
@@ -32,6 +32,7 @@
     </div>
   </div>
 </div>
+</div>
 
 <div class="div d-flex justify-content-center">
   <div class="col-md-5">
@@ -39,7 +40,7 @@
       <ng-template ngbSlide *ngFor="let image of images">
         <div class="carousel-image-container">
           <img class="carousel-image" src="{{image.name}}" [alt]="image.caption">
-          <div class="caption">{{image.caption}}</div>
+<!--          <div class="caption">{{image.caption}}</div>-->
         </div>
       </ng-template>
     </ngb-carousel>
