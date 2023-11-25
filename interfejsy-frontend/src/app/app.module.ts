@@ -12,6 +12,7 @@ import { GameComponent } from './game/game.component';
 import {NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SquareComponent } from './game/square/square.component';
 import { BoardComponent } from './game/board/board.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,12 +26,13 @@ import { BoardComponent } from './game/board/board.component';
     SquareComponent,
     BoardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    NgbCarouselModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        NgbCarouselModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,47 @@
-<p>list works!</p>
+<!-- user-list.component.html -->
+<div class="container mt-4">
+  <div class="mb-3">
+    <label for="searchInput" class="form-label">Wyszukiwarka:</label>
+    <input type="text" class="form-control" id="searchInput" [(ngModel)]="searchTerm" placeholder="Wpisz frazę">
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th style="color: slategrey">#</th>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+      <th>Email</th>
+      <th>Płeć</th>
+      <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of paginatedUsers; let i = index">
+      <td style="color: slategrey">{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+      <td>{{ user.firstname }}</td>
+      <td>{{ user.lastname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.gender }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="editUser(user)" style="margin-right: 3px">Edytuj</button>
+        <button class="btn btn-danger" (click)="deleteUser(user)">Usuń</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-container">
+    <ngb-pagination
+      [(page)]="currentPage"
+      [pageSize]="pageSize"
+      [collectionSize]="filteredUsers.length"
+      [maxSize]="5"
+      [rotate]="true"
+      [boundaryLinks]="true"
+      [ellipses]="true"
+      size="sm"
+      aria-label="pagination"
+    ></ngb-pagination>
+  </div>
+</div>
