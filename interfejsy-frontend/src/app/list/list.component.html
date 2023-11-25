@@ -1,5 +1,9 @@
 <!-- user-list.component.html -->
 <div class="container mt-4">
+  <ngb-alert *ngIf="alert" [type]="alert.type" (closed)="alert = null">
+    {{ alert.message }}
+  </ngb-alert>
+
   <div class="mb-3">
     <label for="searchInput" class="form-label">Wyszukiwarka:</label>
     <input type="text" class="form-control" id="searchInput" [(ngModel)]="searchTerm" placeholder="Wpisz frazę">
@@ -19,8 +23,8 @@
     <tbody>
     <tr *ngFor="let user of paginatedUsers; let i = index">
       <td style="color: slategrey">{{ (currentPage - 1) * pageSize + i + 1 }}</td>
-      <td>{{ user.firstname }}</td>
-      <td>{{ user.lastname }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.gender }}</td>
       <td>
@@ -32,7 +36,7 @@
   </table>
 
   <div class="pagination-container">
-    <ngb-pagination
+    <ngb-pagination *ngIf="users && users.length > 0"
       [(page)]="currentPage"
       [pageSize]="pageSize"
       [collectionSize]="filteredUsers.length"
