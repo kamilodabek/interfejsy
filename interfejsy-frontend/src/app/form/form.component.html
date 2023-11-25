@@ -1,27 +1,39 @@
 <div class="container col-4">
-  <form>
+  <ngb-alert *ngIf="showSuccessAlert" [dismissible]="false" type="success">
+    Person added successfully!
+  </ngb-alert>
+
+  <ngb-alert *ngIf="showErrorAlert" [dismissible]="false" type="danger">
+    Error adding person. Please try again.
+  </ngb-alert>
+
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="mb-3">
-      <label for="firstNameInput" class="form-label">First Name</label>
-      <input type="text" class="form-control" id="firstNameInput" aria-describedby="emailHelp">
+      <label for="firstNameInput" class="form-label">Imię</label>
+      <input type="text" class="form-control" id="firstNameInput" formControlName="firstName" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-      <label for="lastNameInput" class="form-label">Last Name</label>
-      <input type="text" class="form-control" id="lastNameInput" aria-describedby="emailHelp">
+      <label for="lastNameInput" class="form-label">Nazwisko</label>
+      <input type="text" class="form-control" id="lastNameInput" formControlName="lastName" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
       <label for="emailInput" class="form-label">Email</label>
-      <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+      <input type="email" class="form-control" id="emailInput" formControlName="email" aria-describedby="emailHelp">
+      <div *ngIf="form.get('email').hasError('email') && form.get('email').touched" class="text-danger">
+        Nieprawidłowy adres email
+      </div>
     </div>
     <div class="mb-3">
-      <label for="emailInput" class="form-label">Select your gender</label>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Select here</option>
-        <option value="1">Male</option>
-        <option value="2">Female</option>
-        <option value="3">I prefer not to say</option>
+      <label for="genderSelect" class="form-label">Wybierz swoją płeć</label>
+      <select class="form-select" id="genderSelect" formControlName="gender" aria-label="Default select example">
+        <option value="" disabled selected>Wybierz</option>
+        <option value="Male">Mężczyzna</option>
+        <option value="Female">Kobieta</option>
+        <option value="PreferNotToSay">Wolę nie mówić</option>
       </select>
     </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="d-grid mx-auto">
+      <button type="submit" class="btn btn-primary btn-lg">Dodaj osobę</button>
+    </div>
   </form>
 </div>
