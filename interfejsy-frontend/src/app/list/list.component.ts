@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 
 interface CustomAlert {
@@ -15,6 +15,9 @@ interface CustomAlert {
 export class ListComponent implements OnInit{
   users: any[]; // Załóżmy, że masz tablicę użytkowników
   searchTerm: string = ''; // Wyszukiwarka
+  editingUser: any;
+  showSuccessAlert = false;
+  showErrorAlert = false;
 
   constructor(private http: HttpClient) {}
 
@@ -77,7 +80,40 @@ export class ListComponent implements OnInit{
   // Obsługa przycisku "Edit"
   editUser(user: any) {
     console.log('Edit user:', user);
-    // Tutaj możesz dodać logikę edycji użytkownika
+
+    this.editingUser = { ...user };
+  }
+
+  saveUser() {
+    console.log('Save user:', this.editingUser);
+
+    // Tutaj dodaj logikę wysłania żądania PUT do backendu
+    this.http.put('http://localhost:8091/person/update', this.editingUser, { responseType: 'text' })
+      .subscribe(
+        (response) => {
+          console.log('Zaktualizowano użytkownika:', response);
+          this.loadUsers();
+          this.editingUser = null;
+          this.showSuccessAlert = true; // Wyświetl alert po pomyślnej aktualizacji
+          setTimeout(() => this.showSuccessAlert = false, 3000);
+        },
+        (error) => {
+          console.error('Błąd podczas aktualizacji użytkownika:', error);
+          this.showErrorAlert = true; // Wyświetl alert po błędzie
+          setTimeout(() => this.showErrorAlert = false, 3000);
+
+          // Dodatkowe obsługi błędów
+          if (error instanceof HttpErrorResponse && error.status === 200) {
+            console.error('Błąd parsowania odpowiedzi tekstowej:', error.error);
+          }
+        }
+      );
+
+  }
+
+  cancelEdit() {
+    // Po anulowaniu edycji, wyczyść informacje o edycji
+    this.editingUser = null;
   }
 
   // Obsługa przycisku "Delete"

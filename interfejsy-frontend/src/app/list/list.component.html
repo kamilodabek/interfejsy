@@ -48,4 +48,37 @@
       aria-label="pagination"
     ></ngb-pagination>
   </div>
+
+
+
+  <ngb-alert *ngIf="showSuccessAlert" [dismissible]="true" (closed)="showSuccessAlert = false" type="success">
+    Zaktualizowano użytkownika pomyślnie!
+  </ngb-alert>
+
+  <ngb-alert *ngIf="showErrorAlert" [dismissible]="true" (closed)="showErrorAlert = false" type="danger">
+    Błąd podczas aktualizacji użytkownika.
+  </ngb-alert>
+
+  <div *ngIf="editingUser">
+    <h3>Edytuj użytkownika</h3>
+    <form (ngSubmit)="saveUser()">
+      <div class="mb-3">
+        <label for="editFirstName" class="form-label">Imię:</label>
+        <input type="text" class="form-control" id="editFirstName" [(ngModel)]="editingUser.firstName" name="editFirstName" required>
+      </div>
+      <div class="mb-3">
+        <label for="editLastName" class="form-label">Nazwisko:</label>
+        <input type="text" class="form-control" id="editLastName" [(ngModel)]="editingUser.lastName" name="editLastName" required>
+      </div>
+      <div class="mb-3">
+        <label for="editEmail" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="editEmail" [(ngModel)]="editingUser.email" name="editEmail" required>
+      </div>
+      <!-- Dodaj inne pola formularza w zależności od potrzeb -->
+      <button type="submit" class="btn btn-primary" style="margin-right: 3px">Zapisz zmiany</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Anuluj</button>
+    </form>
+  </div>
+
+
 </div>
