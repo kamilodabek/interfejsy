@@ -36,7 +36,7 @@ public class PersonService {
             existingPerson.setFirstName(person.getFirstName());
             existingPerson.setLastName(person.getLastName());
             existingPerson.setEmail(person.getEmail());
-            existingPerson.setPhoneNumber(person.getPhoneNumber());
+            existingPerson.setGender(person.getGender());
 
             return personRepository.save(existingPerson);
         } else {
