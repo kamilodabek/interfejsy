@@ -6,8 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findById(long id);
+//@Transactional
+//@Repository
+public interface PersonRepository extends JpaRepository<Person, Long> {
+    Person findById(long id);
+    List<Person> findAll();
 }
